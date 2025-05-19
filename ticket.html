@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ticket Confirmation</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: sans-serif;
+        background-image: url(assets/images/background-desktop.png);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 600px;
+        border-radius: 15px;
+        text-align: left;
+        padding: 20px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: rgb(6, 19, 53);
+        padding: 30px;
+    }
+    .name {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .email {
+        font-size: 16px;
+        color: #ccc;
+    }
+    @media (max-width: 480px) {
+        .container {
+            width: 100%;
+        }
+        .info {
+            padding: 15px;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+        }
+        .name {
+            font-size: 18px;
+        }
+        .email {
+            font-size: 12px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="assets/images/logo-full.svg">
+        </div>
+        <h1 id="congrats-message"></h1>
+        <p id="email-message"></p>
+        <div class="info">
+            <img style="margin-bottom: 10px;" src="assets/images/logo-full.svg">
+            <p style="font-size: 13px;">Jan 31, 2025 / Austin, TX</p>
+            <div style="display: flex; gap: 20px; align-items: center; justify-content: center;">
+                <img id="avatar" class="avatar" src="" alt="Avatar">
+                <div>
+                    <div style="margin-bottom: 10px;" id="name" class="name"></div>
+                    <div id="email" class="email"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('name');
+        const email = params.get('email');
+        const avatar = params.get('avatar');
+
+        if (name) {
+            document.getElementById('congrats-message').textContent = `Congrats, ${name}! Your ticket is ready.`;
+            document.getElementById('name').textContent = name;
+        }
+
+        if (email) {
+            document.getElementById('email-message').textContent = `We've emailed your ticket to ${email} and will send updates in the run up to the event.`;
+            document.getElementById('email').textContent = email;
+        }
+        if (avatar) {
+            document.getElementById('avatar').src = avatar;
+        } else {
+            document.getElementById('avatar').src = "assets/images/default-avatar.png";
+        }
+    </script>
+
+    <!-- <script>
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('name');
+        const email = params.get('email');
+        const avatar = params.get('avatar');
+
+        if (name) {
+            document.getElementById('congrats-message').textContent = `Congrats, ${name}! Your ticket is ready.`;
+        }
+        if (email) {
+            document.getElementById('email-message').textContent = `We've emailed your ticket to ${email} and will send updates in the run up to the event.`;
+        }
+        if (avatar) {
+            document.getElementById('avatar').src = avatar;
+        }
+        if (name) {
+            document.getElementById('name').textContent = name;
+        }
+        if (email) {
+            document.getElementById('email').textContent = email;
+        }
+    </script> -->
+</body>
+</html>

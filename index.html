@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Conference ticket generator</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-image: url(assets/images/background-desktop.png);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      width: 430px;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      position: relative;
+    }
+    h1 {
+      margin-bottom: 8px;
+      font-size: 34px;
+    }
+    p {
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: #ccc;
+    }
+    input[type="file"] {
+      background-color: #2d1b40;
+      color: #aaa;
+      border: 1px dashed #555;
+      cursor: pointer;
+      margin-bottom: 15px;
+      height: 100px;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: none;
+    }
+    input {
+      background-color: #2a1f3f;
+      color: white;
+    }
+    button {
+      background-color: #ff5c5c;
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #e14d4d;
+    }
+    .position1{
+      position: relative;
+      right: 140px;
+      top: 15px;
+    }
+    .position2{
+      position: relative;
+      right: 130px;
+      top: 15px;
+    }
+    .position3{
+      position: relative;
+      right: 120px;
+      top: 15px;
+    }
+    .position4{
+      position: relative;
+      top: 15px;
+      right: 130px;
+    }
+    .position5{
+      position: relative;
+      right: 62px;
+    }
+    @media (max-width: 500px) {
+      body {
+        height: auto;
+        padding: 20px 0;
+      }
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      input[type="file"] {
+        height: 70px;
+      }
+      .position1{
+        position: relative;
+        right: 65px;
+        top: 15px;
+      }
+      .position2{
+        position: relative;
+        right: 55px;
+        top: 15px;
+      }
+      .position3{
+        position: relative;
+        right: 45px;
+        top: 15px;
+      }
+      .position4{
+        position: relative;
+        top: 15px;
+        right: 50px;
+      }
+      .position5{
+        position: relative;
+        right: 7px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <div class="logo">
+        <img src="assets/images/logo-full.svg" width="130px">
+      </div>
+      <h1>Your Journey to Coding Conf<br> 2025 Starts Here!</h1>
+      <p>Secure your spot at next year's biggest coding conference.</p>
+      <div>
+        <p class="position4">Upload Avatar</p>
+        <input type="file" accept="image/*">
+        <p class="position5" style="font-size: 10px;">Upload your photo (JPG or PNG, max size: 500KB).</p>
+      </div>
+      <p class="position1">Full Name</p>
+      <input id="name" type="text" placeholder="Name">
+      <p class="position2">Email Address</p>
+      <input id="email" type="email" placeholder="example@email. com">
+      <p class="position3">GitHub Username</p>
+      <input type="text" placeholder="@yourusername">
+      <button onclick="generateTicket()">Generate My Ticket</button>
+    </div>
+    <script>
+      function generateTicket() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+  
+        if (name && email) {
+          window.location.href = `ticket.html?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+        } else {
+          alert("Please enter a valid email!");
+        }
+      }
+    </script>
+</body>
+</html>
